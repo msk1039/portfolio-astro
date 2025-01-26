@@ -13,7 +13,7 @@ export type Link = {
 }
 
 export const SITE: Site = {
-  TITLE: 'Mayank Kadam',
+  TITLE: 'msk1039',
   DESCRIPTION:
     'I am a hobbyist programmer, currently a freshmen in a bachelors of informtation technology degree, who likes to write & build his mind out',
   EMAIL: 'mayz@edbn.me',
@@ -23,11 +23,13 @@ export const SITE: Site = {
 }
 
 export const NAV_LINKS: Link[] = [
+  { href: '/work', label: 'work' },
   { href: '/projects', label: 'projects' },
   { href: '/blog', label: 'blog' },
   // { href: '/authors', label: 'authors' },
+  // { href: '/authors', label: 'authors' },
   { href: '/about', label: 'about' },
-  { href: '/tags', label: 'tags' },
+  // { href: '/tags', label: 'tags' },
 ]
 
 export const SOCIAL_LINKS: Link[] = [
