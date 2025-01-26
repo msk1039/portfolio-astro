@@ -13,25 +13,27 @@ export type Link = {
 }
 
 export const SITE: Site = {
-  TITLE: 'astro-erudite',
+  TITLE: 'Mayank Kadam',
   DESCRIPTION:
-    'astro-erudite is a opinionated, no-frills blogging template—built with Astro, Tailwind, and shadcn/ui.',
-  EMAIL: 'jason@enscribe.dev',
+    'I am a hobbyist programmer, currently a freshmen in a bachelors of informtation technology degree, who likes to write & build his mind out',
+  EMAIL: 'mayz@edbn.me',
   NUM_POSTS_ON_HOMEPAGE: 2,
   POSTS_PER_PAGE: 3,
   SITEURL: 'https://astro-erudite.vercel.app',
 }
 
 export const NAV_LINKS: Link[] = [
+  { href: '/projects', label: 'projects' },
   { href: '/blog', label: 'blog' },
-  { href: '/authors', label: 'authors' },
+  // { href: '/authors', label: 'authors' },
   { href: '/about', label: 'about' },
   { href: '/tags', label: 'tags' },
 ]
 
 export const SOCIAL_LINKS: Link[] = [
-  { href: 'https://github.com/jktrn', label: 'GitHub' },
-  { href: 'https://twitter.com/enscry', label: 'Twitter' },
-  { href: 'jason@enscribe.dev', label: 'Email' },
-  { href: '/rss.xml', label: 'RSS' },
+  { href: 'https://github.com/msk1039', label: 'GitHub' },
+  // { href: 'https://twitter.com/enscry', label: 'Twitter' },
+  { href: 'https://www.linkedin.com/in/mayank-kadam-82a60227a/', label: 'LinkedIn' },
+  { href: 'mayz@edbn.me', label: 'Email' },
+  // { href: '/rss.xml', label: 'RSS' },
 ]

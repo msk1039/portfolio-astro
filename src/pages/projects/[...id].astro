@@ -1,0 +1,88 @@
+---
+import { getCollection, type CollectionEntry, render } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+import Container from '@/components/Container.astro'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import { Badge } from '@/components/ui/badge'
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }))
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+const { data } = project
+const { Content } = await render(project) // Changed from project.render() to render(project)
+---
+
+<Layout 
+  title={project.data.name}
+  description={project.data.description}
+  image={project.data.image?.src}
+>
+  <Container class="flex grow flex-col gap-y-8">
+    <Breadcrumbs
+      items={[
+        { label: 'Projects', href: '/projects', icon: 'lucide:folder' },
+        { label: project.data.name, icon: 'lucide:file' },
+      ]}
+    />
+
+    <article class="prose prose-slate dark:prose-invert max-w-none">
+      <div class="flex flex-col gap-4 not-prose mb-8">
+        <h1 class="text-3xl font-bold tracking-tight">{project.data.name}</h1>
+        
+        {project.data.image && (
+          <div class="overflow-hidden rounded-lg">
+            <Image
+              src={project.data.image}
+              alt={project.data.name}
+              width={1200}
+              height={630}
+              class="w-full object-cover transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        )}
+
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-muted-foreground">{project.data.description}</p>
+          
+          {project.data.link && (
+            <a 
+              href={project.data.link}
+              target="_blank"
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-2 text-primary hover:underline"
+            >
+              <Icon name="lucide:external-link" class="size-4" />
+              View Project
+            </a>
+          )}
+        </div>
+
+        {project.data.tags && (
+          <div class="flex flex-wrap gap-2">
+            {project.data.tags.map((tag: string) => (
+              <Badge variant="secondary" showHash={false}>
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div class="prose-headings:font-heading prose-headings:tracking-tight">
+        <Content />
+      </div>
+    </article>
+  </Container>
+</Layout>
