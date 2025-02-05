@@ -16,6 +16,7 @@ import remarkEmoji from 'remark-emoji'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import sectionize from '@hbsnow/rehype-sectionize'
+import compress from 'astro-compress';
 
 import icon from 'astro-icon'
 
@@ -30,6 +31,7 @@ export default defineConfig({
     mdx(),
     react(),
     icon(),
+    compress(),
   ],
   markdown: {
     syntaxHighlight: false,
