@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "server": "serve dist/",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
