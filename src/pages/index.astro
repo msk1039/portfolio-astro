@@ -21,25 +21,46 @@ const blog = (await getCollection('blog'))
 ---
 
 <Layout title="Home" description={SITE.DESCRIPTION}>
-  <Container class="flex flex-col gap-y-6">
+  <Container class="flex flex-col gap-y-6 bg-[#fcf3e6]">
     <section>
-      <Card>
+      <Card className="bg-[#fcf3e6]">
         <CardHeader>
-          <CardTitle className="text-3xl">Mayank</CardTitle>
+          <CardTitle
+            className="font-['Augillion'] text-4xl font-normal text-[#f19d4f]"
+            >Mayank</CardTitle
+          >
           <CardDescription
-            ><span class="font-semibold">Programmer</span
-            > . <span class="font-semibold">Designer</span
-              > . <span class="font-semibold">Artist</span
-                ></CardDescription
+            ><span class="font-satoshi text-base font-medium text-[#222]"
+              >Programmer</span
+            >
+            <span class="font-black">·</span>
+            <span class="font-satoshi text-base font-medium text-[#222]"
+              >Designer</span
+            >
+            <span class="font-black">·</span>
+            <span class="font-satoshi text-base font-medium text-[#222]"
+              >Artist</span
+            ></CardDescription
           >
         </CardHeader>
         <CardContent>
-          <p class="mb-2 text-sm text-muted-foreground">
-            I am a hobbyist programmer, currently a freshmen in a bachelors of informtation technology degree, who likes to write & build his mind out
+          <p class="mb-2 font-satoshi text-lg leading-[26px] text-[#222] font-normal">
+            I’m Mayank,a 19 yo IT student , a programmer, designer, and artist
+            who loves creating cool and meaningful projects. I’m always
+            experimenting, whether it’s building web apps, designing
+            sleek interfaces, or diving into low-level systems. You’ll
+            often find me working on side projects, participating in hackathons,
+            or just exploring something fun and challenging. If you’re into
+            building awesome stuff too, or just want to chat about tech, design,
+            or anything creative, feel free to reach out!
           </p>
+          <!-- <p class="font-satoshi font-normal">Regular 400</p>
+<p class="font-satoshi font-medium">Medium 500</p>
+<p class="font-satoshi font-bold">Bold 700</p>
+<p class="font-satoshi font-black">Black 900</p> -->
           <img
             src="/cat-image.png"
-            width="specific-width" 
+            width="specific-width"
             height="specific-height"
             alt="cat image"
             class="col-span-full mx-auto w-full max-w-[1000px] object-cover"
@@ -47,8 +68,8 @@ const blog = (await getCollection('blog'))
         </CardContent>
       </Card>
     </section>
-    <section class="flex flex-col gap-y-4">
-      <h2 class="text-2xl font-bold">Latest posts</h2>
+    <!-- <section class="flex flex-col gap-y-4">
+      <h2 class="text-2xl font-bold ">Latest posts</h2>
       <ul class="not-prose flex flex-col gap-y-4">
         {
           blog.map((post) => (
@@ -69,6 +90,6 @@ const blog = (await getCollection('blog'))
           >
         </Link>
       </div>
-    </section>
+    </section> -->
   </Container>
 </Layout>

@@ -1,7 +1,7 @@
 ---
-name: 'Project A'
-description: 'This is an example project description! You should replace this with a description of your own project.'
-tags: ['Framework A', 'Library B', 'Tool C', 'Resource D']
-image: '../../../public/static/1200x630.png'
-link: 'https://example.com'
+name: 'edbn'
+description: 'Create stunning portfolio pages that highlight your academic journey, research, and achievements. Perfect for educators and professors who want to make their mark in academia.'
+tags: ['nextjs', 'shadcn', 'supabase']
+image: '../../../public/static/edbnme.png'
+link: 'https://edbn.vercel.app/'
 ---

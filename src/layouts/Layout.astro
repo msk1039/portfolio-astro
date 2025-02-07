@@ -15,19 +15,21 @@ const { title, description, image } = Astro.props
 
 <!doctype html>
 <html lang="en">
+
   <head>
     <Head
       title={`${title} | ${SITE.TITLE}`}
       description={description}
       image={image}
     />
+    <meta name="color-scheme" content="light">
   </head>
   <body>
     <div
-      class="box-border flex h-fit min-h-screen flex-col gap-y-6 font-sans antialiased"
+      class="box-border flex h-fit min-h-screen flex-col gap-y-6 font-sans antialiased bg-[#fdf3e7]"
     >
       <Header />
-      <main class="flex-grow">
+      <main class="flex-grow bg-[#fcf3e6]">
         <slot />
       </main>
       <Footer />

@@ -9,10 +9,12 @@ const config: Config = {
       fontFamily: {
         sans: ['Geist', ...defaultTheme.fontFamily.sans],
         mono: ['Geist Mono', ...defaultTheme.fontFamily.mono],
+        'satoshi': ['Satoshi', 'sans-serif'],
+        'augillion': ['Augillion'],
       },
       colors: {
         background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        foreground: '#f19d4f',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -40,6 +42,7 @@ const config: Config = {
         border: 'hsl(var(--border))',
         ring: 'hsl(var(--ring))',
       },
+      
     },
   },
   plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],

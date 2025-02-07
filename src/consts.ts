@@ -19,13 +19,14 @@ export const SITE: Site = {
   EMAIL: 'mayz@edbn.me',
   NUM_POSTS_ON_HOMEPAGE: 2,
   POSTS_PER_PAGE: 3,
-  SITEURL: 'https://astro-erudite.vercel.app',
+  SITEURL: 'https://mew.mine.bz',
 }
 
 export const NAV_LINKS: Link[] = [
-  { href: '/work', label: 'work' },
+  // { href: '/work', label: 'work' },
   { href: '/projects', label: 'projects' },
-  { href: '/blog', label: 'blog' },
+  { href: '/design', label: 'design' },
+  { href: '/art', label: 'art' },
   // { href: '/authors', label: 'authors' },
   // { href: '/authors', label: 'authors' },
   { href: '/about', label: 'about' },
