@@ -27,13 +27,13 @@ const currentPath = Astro.url.pathname;
                 <Link
                   href={item.href}
                   data-nav-link
-                  class={`capitalize font-satoshi font-medium transition-colors hover:text-[#f19d4f]/80 text-[16px] ${
-                    currentPath === item.href ? 'text-[#f19d4f]' : 'text-[#222222]'
+                  class={`capitalize font-satoshi font-medium transition-colors hover:text-slate-700 text-[16px] ${
+                    currentPath === item.href ? 'text-slate-900' : 'text-slate-600'
                   }`}
                 >
                   {item.label}
                 </Link>
-                {index !== NAV_LINKS.length - 1 && <span class="text-[#222222]"> / </span>}
+                {index !== NAV_LINKS.length - 1 && <span class="text-slate-600"> / </span>}
               </>
             ))
           }

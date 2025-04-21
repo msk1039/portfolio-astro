@@ -29,68 +29,74 @@ const { Content } = await render(project) // Changed from project.render() to re
   description={project.data.description}
   image={project.data.image?.src}
 >
-  <Container class="flex grow flex-col gap-y-8">
-    <Breadcrumbs
-      items={[
-        { label: 'Projects', href: '/projects', icon: 'lucide:folder' },
-        { label: project.data.name, icon: 'lucide:file' },
-      ]}
-    />
-
-    <a 
-        href="/projects"
-        class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors transition-transform duration-300 hover:-translate-x-2"
-      >
-        <Icon name="lucide:arrow-left" class="size-4 transition-transform duration-300 hover:-translate-x-1"/>
-        <span>Back to Projects</span>
-    </a>
-
-    <article class="prose prose-zinc dark:prose-invert max-w-none">
-      <div class="flex flex-col gap-4 not-prose mb-8">
-        <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">{project.data.name}</h1>
-        
-        {project.data.image && (
-          <div class="overflow-hidden rounded-lg bg-zinc-50 dark:bg-zinc-900">
-            <Image
-              src={project.data.image}
-              alt={project.data.name}
-              width={1200}
-              height={630}
-              class="w-full object-cover transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-        )}
-
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p class="text-zinc-600 dark:text-zinc-400">{project.data.description}</p>
-          
-          {project.data.link && (
-            <a 
-              href={project.data.link}
-              target="_blank"
-              rel="noopener noreferrer" 
-              class="inline-flex items-center gap-2 text-zinc-900 dark:text-zinc-100 hover:text-zinc-700 dark:hover:text-zinc-300"
-            >
-              <Icon name="lucide:external-link" class="size-4" />
-              View Project
-            </a>
-          )}
+  <Container class="px-8 md:px-12 py-12 max-w-7xl mx-auto">
+    <section class="scroll-mt-4">
+      <div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-4" data-animate data-delay="0">
+        <div>
+          <p class="text-3xl md:text-4xl lg:text-5xl tracking-tighter font-medium text-black" data-animate data-delay="1">
+            {project.data.name}
+          </p>
+          <p class="text-sm md:text-base text-zinc-500 mt-4" data-animate data-delay="2">
+            {project.data.description}
+          </p>
         </div>
+      </div>
+      
+      <a 
+        href="/projects"
+        class="inline-flex items-center gap-2 mb-6 rounded-full px-4 border py-2 text-sm font-semibold transition-all bg-white text-zinc-500 h-10 border-zinc-300 hover:bg-black hover:text-white duration-300"
+        data-animate data-delay="3"
+      >
+        <Icon name="lucide:arrow-left" class="size-4"/>
+        <span>Back to Projects</span>
+      </a>
 
-        {project.data.tags && (
-          <div class="flex flex-wrap gap-2">
-            {project.data.tags.map((tag: string) => (
-              <Badge variant="secondary" showHash={false}>
-                {tag}
-              </Badge>
-            ))}
+      <div class="bg-white rounded-3xl border border-zinc-200 shadow-sm p-8 mb-10" data-animate data-delay="4">
+        <article>
+          <div class="flex flex-col gap-6 mb-8">
+            {project.data.image && (
+              <div class="overflow-hidden rounded-2xl border border-zinc-200" data-animate data-delay="5">
+                <Image
+                  src={project.data.image}
+                  alt={project.data.name}
+                  width={1200}
+                  height={630}
+                  class="w-full object-cover transition-all duration-300 hover:scale-105"
+                />
+              </div>
+            )}
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-animate-group>
+              {project.data.link && (
+                <a 
+                  href={project.data.link}
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  class="rounded-full px-4 border py-2 text-sm font-semibold transition-all flex items-center gap-2 bg-white text-zinc-500 h-10 border-zinc-300 hover:bg-black hover:text-white duration-300 w-fit"
+                  data-animate-item
+                >
+                  View Project
+                  <Icon name="lucide:external-link" class="size-4" />
+                </a>
+              )}
+              
+              {project.data.tags && (
+                <div class="flex flex-wrap gap-2" data-animate-item>
+                  {project.data.tags.map((tag: string) => (
+                    <Badge variant="secondary" className="rounded-full bg-zinc-100 text-zinc-800 hover:bg-zinc-200">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </div>
 
-      <div class="prose-headings:font-heading prose-headings:tracking-tight">
-        <Content />
+          <div class="prose prose-zinc max-w-none prose-headings:font-medium prose-headings:tracking-tight prose-p:text-lg prose-p:leading-relaxed prose-p:text-black" data-animate data-delay="6">
+            <Content />
+          </div>
+        </article>
       </div>
-    </article>
+    </section>
   </Container>
 </Layout>

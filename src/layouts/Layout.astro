@@ -26,13 +26,104 @@ const { title, description, image } = Astro.props
   </head>
   <body>
     <div
-      class="box-border flex h-fit min-h-screen flex-col gap-y-6 font-sans antialiased bg-[#fdf3e7]"
+      class="box-border flex h-fit min-h-screen flex-col gap-y-6 font-sans antialiased bg-[#f4f4f5]"
     >
       <Header />
-      <main class="flex-grow bg-[#fcf3e6]">
+      <main class="flex-grow bg-[#f4f4f5]">
         <slot />
       </main>
       <Footer />
     </div>
+
+    <script>
+      // Helper function to set up and run animations
+      function setupAnimations() {
+        console.log("Setting up animations");
+        
+        // Reset all animated elements to their initial state
+        document.querySelectorAll('[data-animate]').forEach((el) => {
+          const element = el as HTMLElement;
+          element.style.opacity = '0';
+          element.style.transform = 'translateY(20px)';
+          element.style.filter = 'blur(2px)';
+          element.style.transition = 'opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease';
+        });
+        
+        document.querySelectorAll('[data-animate-group] [data-animate-item]').forEach((item) => {
+          const htmlItem = item as HTMLElement;
+          htmlItem.style.opacity = '0';
+          htmlItem.style.transform = 'translateY(20px)';
+          htmlItem.style.filter = 'blur(2px)';
+          htmlItem.style.transition = 'opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease';
+        });
+        
+        // Create an observer for individual elements
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const target = entry.target as HTMLElement;
+                const delay = Number(target.getAttribute('data-delay') || 0) * 100;
+                
+                // Apply animation with delay
+                setTimeout(() => {
+                  target.style.opacity = '1';
+                  target.style.transform = 'translateY(0)';
+                  target.style.filter = 'blur(0px)';
+                }, delay);
+                
+                // Unobserve after animation
+                observer.unobserve(target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        // Create an observer for group elements
+        const groupObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const group = entry.target;
+                const items = group.querySelectorAll('[data-animate-item]');
+                
+                // Apply staggered animation to items
+                items.forEach((item, index) => {
+                  setTimeout(() => {
+                    (item as HTMLElement).style.opacity = '1';
+                    (item as HTMLElement).style.transform = 'translateY(0)';
+                    (item as HTMLElement).style.filter = 'blur(0px)';
+                  }, index * 100);
+                });
+                
+                // Unobserve after animation
+                groupObserver.unobserve(group);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        // Observe all elements with data-animate
+        document.querySelectorAll('[data-animate]').forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Observe all group elements
+        document.querySelectorAll('[data-animate-group]').forEach((group) => {
+          groupObserver.observe(group);
+        });
+      }
+
+      // Initial setup on page load
+      document.addEventListener('DOMContentLoaded', setupAnimations);
+      
+      // Setup for Astro page transitions
+      document.addEventListener('astro:page-load', setupAnimations);
+      
+      // Handle view transitions API if available
+      document.addEventListener('astro:after-swap', setupAnimations);
+    </script>
   </body>
 </html>

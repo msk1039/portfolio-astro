@@ -12,9 +12,13 @@ const config: Config = {
         'satoshi': ['Satoshi', 'sans-serif'],
         'augillion': ['Augillion'],
       },
+      borderRadius: {
+        'full': '9999px',
+        '3xl': '1.5rem',
+      },
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: '#f19d4f',
+        background: '#f4f4f5',
+        foreground: '#18181b',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -42,7 +46,12 @@ const config: Config = {
         border: 'hsl(var(--border))',
         ring: 'hsl(var(--ring))',
       },
-      
+      transitionProperty: {
+        'all': 'all',
+      },
+      transitionDuration: {
+        '300': '300ms',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],

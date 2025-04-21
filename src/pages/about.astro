@@ -11,45 +11,52 @@ const projects = await getCollection('projects')
 ---
 
 <Layout title="About" description={SITE.DESCRIPTION}>
-  <Container class="flex flex-col gap-y-6">
-    <Breadcrumbs items={[{ label: 'About', icon: 'lucide:info' }]} />
+  <Container class="px-8 md:px-12 py-12 max-w-7xl mx-auto">
+    <section class="scroll-mt-4">
+      <div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-4" data-animate data-delay="0">
+        <div>
+          <p class="text-3xl md:text-4xl lg:text-5xl tracking-tighter font-medium text-black" data-animate data-delay="1">
+            About
+          </p>
+          <p class="text-sm md:text-base text-zinc-500 mt-4" data-animate data-delay="2">
+            Learn more about this project and its capabilities
+          </p>
+        </div>
+      </div>
 
-    <section>
-      <div class="min-w-full">
+      <div class="bg-white rounded-3xl border border-zinc-200 shadow-sm p-8 mb-10" data-animate data-delay="3">
         <div class="prose prose-neutral mb-8 dark:prose-invert">
-          <p class="mb-4">
+          <p class="mb-6 font-satoshi text-lg leading-[26px] text-black font-normal" data-animate data-delay="4">
             astro-erudite is an opinionated, no-frills static blogging template
             that prioritizes simplicity and performance, built with <Link
               href="https://astro.build"
-              class="text-foreground"
-              external
-              underline>Astro</Link
+              class="text-black font-medium hover:text-slate-700 transition-all duration-300"
+              external>Astro</Link
             >, <Link
               href="https://tailwindcss.com"
-              class="text-foreground"
-              external
-              underline>Tailwind</Link
+              class="text-black font-medium hover:text-slate-700 transition-all duration-300"
+              external>Tailwind</Link
             >, and <Link
               href="https://ui.shadcn.com"
-              class="text-foreground"
-              external
-              underline>shadcn/ui</Link
+              class="text-black font-medium hover:text-slate-700 transition-all duration-300"
+              external>shadcn/ui</Link
             >. It provides a clean foundation for your content while being
             extremely easy to customize.
           </p>
-          <p>
+          <p class="font-satoshi text-lg leading-[26px] text-black font-normal" data-animate data-delay="5">
             To learn more about the philosophy behind this template, check out
             the following blog post: <Link
               href="/blog/the-state-of-static-blogs"
-              class="text-foreground"
-              underline>The State of Static Blogs in 2024</Link
+              class="text-black font-medium hover:text-slate-700 transition-all duration-300">The State of Static Blogs in 2024</Link
             >.
           </p>
         </div>
 
-        <h2 class="mb-4 text-2xl font-semibold">Example Projects Listing</h2>
-        <div class="flex flex-col gap-4">
-          {projects.map((project) => <ProjectCard project={project} />)}
+        <div class="mt-8 pt-6 border-t border-zinc-200" data-animate data-delay="6">
+          <h2 class="text-2xl font-medium text-black mb-6" data-animate data-delay="7">Example Projects</h2>
+          <div class="flex flex-col gap-6" data-animate-group>
+            {projects.map((project) => <div data-animate-item><ProjectCard project={project} /></div>)}
+          </div>
         </div>
       </div>
     </section>

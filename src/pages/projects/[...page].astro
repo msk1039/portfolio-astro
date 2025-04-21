@@ -21,33 +21,39 @@ const { page } = Astro.props
 ---
 
 <Layout title="Projects" description="My Projects and Work">
-  <Container class="flex grow flex-col gap-y-6">
-    <Breadcrumbs
-      items={[
-        { label: 'Projects', href: '/projects', icon: 'lucide:folder' },
-        { label: `Page ${page.currentPage}`, icon: 'lucide:folder-open' },
-      ]}
-    />
+  <Container class="px-8 md:px-12 py-12 max-w-7xl mx-auto">
+    <section class="scroll-mt-4">
+      <div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-4" data-animate data-delay="0">
+        <div>
+          <p class="text-3xl md:text-4xl lg:text-5xl tracking-tighter font-medium text-black" data-animate data-delay="1">
+            Projects
+          </p>
+          <p class="text-sm md:text-base text-zinc-500 mt-4" data-animate data-delay="2">
+            Page {page.currentPage} of {page.lastPage}
+          </p>
+        </div>
+      </div>
 
-    <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
-      <section class="flex flex-col gap-y-4">
-        <ul class="not-prose flex flex-col gap-4">
+      <div class="bg-white rounded-3xl border border-zinc-200 shadow-sm p-8 mb-10 min-h-[calc(100vh-24rem)]" data-animate data-delay="3">
+        <ul class="not-prose grid grid-cols-1 gap-6" data-animate-group>
           {
-            page.data.map((project) => (
-              <li>
+            page.data.map((project, index) => (
+              <li data-animate-item>
                 <ProjectCard project={project} />
               </li>
             ))
           }
         </ul>
-      </section>
-    </div>
-
-    <PaginationComponent
-      currentPage={page.currentPage}
-      totalPages={page.lastPage}
-      baseUrl="/projects/"
-      client:load
-    />
+        
+        <div class="mt-10 pt-6 border-t border-zinc-200">
+          <PaginationComponent
+            currentPage={page.currentPage}
+            totalPages={page.lastPage}
+            baseUrl="/projects/"
+            client:load
+          />
+        </div>
+      </div>
+    </section>
   </Container>
 </Layout>

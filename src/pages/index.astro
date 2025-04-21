@@ -21,56 +21,80 @@ const blog = (await getCollection('blog'))
 ---
 
 <Layout title="Home" description={SITE.DESCRIPTION}>
-  <Container class="flex flex-col gap-y-6 bg-[#fcf3e6]">
-    <section>
-      <Card className="bg-[#fcf3e6]">
-        <CardHeader>
+  <Container class="px-8 md:px-12 py-12 max-w-7xl mx-auto">
+    <section class="scroll-mt-4">
+      <div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-4" data-animate data-delay="0">
+        <div>
+          <p class="text-3xl md:text-4xl lg:text-5xl tracking-tighter font-['Augillion'] text-slate-900" data-animate data-delay="0.5">
+            Mayank
+          </p>
+          <p class="text-sm md:text-base text-zinc-500 mt-4" data-animate data-delay="1">
+            <span class="font-satoshi text-base font-medium text-slate-800">Programmer</span>
+            <span class="font-black px-2">·</span>
+            <span class="font-satoshi text-base font-medium text-slate-800">Designer</span>
+            <span class="font-black px-2">·</span>
+            <span class="font-satoshi text-base font-medium text-slate-800">Artist</span>
+          </p>
+        </div>
+      </div>
+      
+      <Card className="bg-white border-1 border-solid rounded-3xl md:border-r md:border-zinc-300 shadow-sm" data-animate data-delay="1.2">
+        <CardHeader className="p-8">
           <CardTitle
-            className="font-['Augillion'] text-4xl font-normal text-[#f19d4f]"
-            >Mayank</CardTitle
+            className="text-2xl font-medium text-black"
+            data-animate data-delay="1.4"
+            >About Me</CardTitle
           >
-          <CardDescription
-            ><span class="font-satoshi text-base font-medium text-[#222]"
-              >Programmer</span
-            >
-            <span class="font-black">·</span>
-            <span class="font-satoshi text-base font-medium text-[#222]"
-              >Designer</span
-            >
-            <span class="font-black">·</span>
-            <span class="font-satoshi text-base font-medium text-[#222]"
-              >Artist</span
-            ></CardDescription
+          <CardDescription className="text-zinc-500 mt-2"
+            data-animate data-delay="1.6"
+            >IT student and creative technologist</CardDescription
           >
         </CardHeader>
-        <CardContent>
-          <p class="mb-2 font-satoshi text-lg leading-[26px] text-[#222] font-normal">
-            I’m Mayank,a 19 yo IT student , a programmer, designer, and artist
-            who loves creating cool and meaningful projects. I’m always
-            experimenting, whether it’s building web apps, designing
-            sleek interfaces, or diving into low-level systems. You’ll
+        <CardContent className="p-8 pt-0 ">
+          <p class="mb-6 font-satoshi text-lg leading-[26px] text-black font-normal" data-animate data-delay="1.8">
+            I'm Mayank, a 19 yo IT student, a programmer, designer, and artist
+            who loves creating cool and meaningful projects. I'm always
+            experimenting, whether it's building web apps, designing
+            sleek interfaces, or diving into low-level systems. You'll
             often find me working on side projects, participating in hackathons,
-            or just exploring something fun and challenging. If you’re into
-            building awesome stuff too, or just want to chat about tech, design,
+            or just exploring something fun and challenging.
+          </p>
+          <p class="mb-8 font-satoshi text-lg leading-[26px] text-black font-normal" data-animate data-delay="2">
+            If you're into building awesome stuff too, or just want to chat about tech, design,
             or anything creative, feel free to reach out!
           </p>
-          <!-- <p class="font-satoshi font-normal">Regular 400</p>
-<p class="font-satoshi font-medium">Medium 500</p>
-<p class="font-satoshi font-bold">Bold 700</p>
-<p class="font-satoshi font-black">Black 900</p> -->
-          <img
-            src="/cat-image.png"
-            width="specific-width"
-            height="specific-height"
-            alt="cat image"
-            class="col-span-full mx-auto w-full max-w-[1000px] object-cover"
-          />
+          <div class="mt-6 flex flex-wrap gap-3" >
+            <a href="#contact" class="rounded-full px-4 border py-2 text-sm font-semibold transition-all flex items-center justify-between bg-white text-zinc-500 h-10 border-zinc-300 hover:bg-black hover:text-white duration-300" data-animate data-delay="2.2">
+              Get In Touch <span class="ml-2">&rarr;</span>
+            </a>
+            <a href="/projects" class="rounded-full px-4 border py-2 text-sm font-semibold transition-all flex items-center justify-between bg-white text-zinc-500 h-10 border-zinc-300 hover:bg-black hover:text-white duration-300" data-animate data-delay="2.2">
+              View Projects <span class="ml-2">&rarr;</span>
+            </a>
+          </div>
+          
+          <div class="mt-10 rounded-2xl overflow-hidden border border-zinc-200" data-animate data-delay="2.4">
+            <img
+              src="/cat-image.png"
+              alt="cat image"
+              class="w-full object-cover"
+            />
+          </div>
         </CardContent>
       </Card>
     </section>
-    <!-- <section class="flex flex-col gap-y-4">
-      <h2 class="text-2xl font-bold ">Latest posts</h2>
-      <ul class="not-prose flex flex-col gap-y-4">
+    
+    <!-- Blog section (commented out but styled according to the new design) -->
+    <!-- <section class="mt-10 flex flex-col gap-y-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+        <h2 class="text-3xl font-medium text-black tracking-tighter">Latest Posts</h2>
+        <Link
+          href="/blog"
+          class="rounded-full px-4 border py-2 text-sm transition-all bg-white text-zinc-500 border-zinc-300 hover:bg-black hover:text-white duration-300 mt-2 md:mt-0"
+        >
+          View All Posts <span>&rarr;</span>
+        </Link>
+      </div>
+      <ul class="not-prose grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           blog.map((post) => (
             <li>
@@ -79,17 +103,6 @@ const blog = (await getCollection('blog'))
           ))
         }
       </ul>
-      <div class="flex justify-center">
-        <Link
-          href="/blog"
-          class={buttonVariants({ variant: 'ghost' }) + ' group'}
-        >
-          See all posts <span
-            class="ml-1.5 transition-transform group-hover:translate-x-1"
-            >&rarr;</span
-          >
-        </Link>
-      </div>
     </section> -->
   </Container>
 </Layout>
